@@ -33,7 +33,8 @@ Once you have issued your tag and want to restore your bower.json file, simply
 execute `bower-pin --unpin` (or `bower-pin -u`), which will also remove the
 backup.
 
-All commands support a dry run by including the `--dry-run` or `-n` parameter.
+All commands support a dry run by including the `--dry-run` (or `-n`) option. A
+`--help` (or `-h`) command is also available.
 
 ## Looking ahead
 
