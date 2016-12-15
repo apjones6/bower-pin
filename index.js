@@ -1,24 +1,27 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var path = require('path');
+const commandLineArgs = require('command-line-args');
+const fs = require('fs');
+const path = require('path');
 
-var ERROR_BACKUP_NOT_FOUND = 1;
-var ERROR_BOWER_CONFIG_NOT_FOUND = 2;
-var ERROR_REPEAT_PIN = 3;
+const ERROR_BACKUP_NOT_FOUND = 1;
+const ERROR_BOWER_CONFIG_NOT_FOUND = 2;
+const ERROR_REPEAT_PIN = 3;
 
-var dryrun = process.argv.indexOf('--dry-run') != -1;
-var unpin = process.argv.indexOf('--unpin') != -1;
+var options = commandLineArgs([
+	{ name: 'dry-run', alias: 'n', type: Boolean },
+	{ name: 'unpin', alias: 'u', type: Boolean }
+]);
 
 var backupPath = path.join(process.cwd(), 'bower.json.bak');
 
-if (unpin) {
+if (options.unpin) {
 	if (!fs.existsSync(backupPath)) {
 		console.error('ERROR: cannot find "' + backupPath + '".');
 		process.exit(ERROR_BACKUP_NOT_FOUND);
 	}
 
-	if (!dryrun) {
+	if (!options['dry-run']) {
 		fs.writeFileSync(path.join(process.cwd(), 'bower.json'), fs.readFileSync(backupPath));
 		fs.unlinkSync(backupPath);
 	}
@@ -48,7 +51,7 @@ else {
 	}
 
 	var contents = fs.readFileSync(path.join(process.cwd(), 'bower.json'), 'utf8');
-	if (!dryrun) {
+	if (!options['dry-run']) {
 		fs.writeFileSync(backupPath, contents);
 	}
 
@@ -56,7 +59,7 @@ else {
 	config.dependencies = dependencies;
 	delete config.resolutions;
 
-	if (!dryrun) {
+	if (!options['dry-run']) {
 		fs.writeFileSync(path.join(process.cwd(), 'bower.json'), JSON.stringify(config, null, 2));
 	}
 }

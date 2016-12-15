@@ -14,5 +14,8 @@
     "Pin"
   ],
   "author": "Alastair Jones",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "command-line-args": ">= 3.0 < 3.1"
+  }
 }
