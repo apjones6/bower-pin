@@ -1,0 +1,18 @@
+{
+  "name": "bower-pin",
+  "version": "1.0.0-beta",
+  "description": "Utility to pin and unpin bower.json dependencies",
+  "main": "index.js",
+  "bin": {
+    "bower-pin": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Bower",
+    "Pin"
+  ],
+  "author": "Alastair Jones",
+  "license": "ISC"
+}
