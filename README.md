@@ -30,8 +30,7 @@ repository. This will update your bower.json file, and add a bower.json.bak. It
 is recommended to .gitignore this file as you generally don't want it versioned.
 
 Once you have issued your tag and want to restore your bower.json file, simply
-execute `bower-pin --unpin` (or `bower-pin -u`), which will also remove the
-backup.
+execute `bower-pin --unpin` (or `-u`), which will also remove the backup.
 
 All commands support a dry run by including the `--dry-run` (or `-n`) option. A
 `--help` (or `-h`) command is also available.
